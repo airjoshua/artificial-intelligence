@@ -1,0 +1,31 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # If you need build-time args (different from env_file), add here:
+      # args:
+      #   CUDA_VER: "12.9.1"
+      #   PYTHON_VER: "3.12"
+    image: rapids-uv:local
+    container_name: rapids-uv
+    # Run as your non-root user (UID:GID from Dockerfile)
+    user: "1001:1001"
+    working_dir: /home/rapids
+    # Load runtime env vars from .env (NOT baked into image)
+    env_file:
+      - .env
+    # Give the container access to GPUs
+    gpus: all
+    # Optional convenience envs for NVIDIA runtime
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    # Mount your source so edits reflect immediately
+    volumes:
+      - ./:/home/rapids/app:cached
+    # Open ports if your app serves anything
+    # ports:
+    #   - "8888:8888"
+    tty: true
+    stdin_open: true
