@@ -120,6 +120,7 @@ class Network:
         # initialize the deltas on each hidden and output layer
         self.delta = [np.zeros((n, 1)) for n in self.sizes]
 
+
     def g(self, z):
         """
         sigmoid activation function
