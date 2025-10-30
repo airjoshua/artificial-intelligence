@@ -1,6 +1,8 @@
 {
   "name": "RAPIDS DevContainer",
-  "dockerComposeFile": ["./docker-compose.yml"],
+  "dockerComposeFile": [
+    "./docker-compose.yml"
+  ],
   "service": "rapids-dev",
   "workspaceFolder": "/workspace",
   "customizations": {
@@ -9,6 +11,14 @@
     }
   },
   "features": {
-    "ghcr.io/devcontainers/features/git": {}
-  }
+    "ghcr.io/devcontainers/features/git": {},
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "17",
+      "installMaven": false,
+      "installGradle": false
+    }},
+    "features": {
+      "ghcr.io/devcontainers/features/git": {}
+    }
 }
+
