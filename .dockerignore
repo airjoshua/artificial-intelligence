@@ -1,0 +1,29 @@
+# --- Version control ---
+.git
+.gitignore
+
+# --- Data files ---
+data/
+!data/.gitkeep
+
+# --- Build output / artifacts ---
+build/
+dist/
+tmp/
+*.log
+
+# --- Python cache ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# --- Secrets / env files ---
+**/.env
+**/.env.local
+**/.env.*.local
+
+# --- Docker / DevContainer ---
+.devcontainer/.git*
+# (Removed Dockerfile and docker-compose.yml so build works)

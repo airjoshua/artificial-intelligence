@@ -1,0 +1,14 @@
+black
+lightgbm
+matplotlib
+nltk
+numpy
+pandas
+seaborn
+scipy
+scikit-learn
+statsmodels
+tensorflow
+torch
+torchvision
+xgboost

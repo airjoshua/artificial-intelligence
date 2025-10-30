@@ -1,0 +1,23 @@
+services:
+  rapids-dev:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    container_name: rapids-dev-container
+    image: my-rapids-project
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true
+    volumes:
+      - ..:/workspace:cached
+      # Removed redundant data mount
+    ports:
+      - "8888:8888"
+      - "8787:8787"
+    shm_size: '2gb'
+    restart: unless-stopped
+    # Add GPU support
+volumes:
+  pip-cache:
+  uv-cache:
