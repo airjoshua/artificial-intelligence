@@ -26,4 +26,3 @@ __pycache__/
 
 # --- Docker / DevContainer ---
 .devcontainer/.git*
-# (Removed Dockerfile and docker-compose.yml so build works)

@@ -11,13 +11,19 @@ services:
     tty: true
     volumes:
       - ..:/workspace:cached
-      # Removed redundant data mount
     ports:
       - "8888:8888"
       - "8787:8787"
     shm_size: '2gb'
     restart: unless-stopped
     # Add GPU support
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
 volumes:
   pip-cache:
   uv-cache:
