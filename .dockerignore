@@ -20,9 +20,7 @@ __pycache__/
 *.egg-info/
 
 # --- Secrets / env files ---
-**/.env
+.env
 **/.env.local
 **/.env.*.local
 
-# --- Docker / DevContainer ---
-.devcontainer/.git*
