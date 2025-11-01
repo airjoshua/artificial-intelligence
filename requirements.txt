@@ -7,6 +7,7 @@ islp
 lightgbm
 nltk
 pytest
+python-dotenv
 spacy
 tensorflow
 tiktoken

@@ -8,6 +8,9 @@ from matplotlib.colors import colorConverter, ListedColormap
 import pandas
 import matplotlib.pylab as plt
 import pytest
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 import math
