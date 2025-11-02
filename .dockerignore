@@ -22,5 +22,7 @@ __pycache__/`
 # --- Secrets / env files ---
 .env
 **/.env.local
-**/.env.*.local
+**/.env.*.local`
 
+/.env
+/data/

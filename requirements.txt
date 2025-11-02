@@ -8,8 +8,10 @@ lightgbm
 nltk
 pytest
 python-dotenv
+setuptools
 spacy
 tensorflow
 tiktoken
 torch
 torchvision
+wandb
