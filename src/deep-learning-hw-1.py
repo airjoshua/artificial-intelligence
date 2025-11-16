@@ -6,9 +6,9 @@ from sklearn import datasets
 import matplotlib.pyplot as plt
 from matplotlib.colors import colorConverter, ListedColormap
 import pandas
-import matplotlib.pylab as plt
 import pytest
 from dotenv import load_dotenv
+from math import pow
 
 load_dotenv()
 
@@ -123,7 +123,6 @@ class Network:
         # initialize the deltas on each hidden and output layer
         self.delta = [np.zeros((n, 1)) for n in self.sizes]
 
-
     def g(self, z):
         """
         sigmoid activation function
@@ -158,17 +157,13 @@ class Network:
         if len(x.shape) == 1:
             x = x.reshape(-1, 1)
         # TODO: step 1. Initialize activation on initial layer to x
-        len(self.W)
-        initial_layer = np.matmul(self.W[0], x) + self.b[0]
-        self.z[0] = initial_layer
-        for i, item in enumerate(self.W):
-            np.dot(self.W[0], x)
-        pass
-        # Ddd
+        self.a[0] = x
+        #
 
         ## TODO: step 2-4. Loop over layers and compute activities and activations
-        for i, (weight, bias) in enumerate(zip(self.W[1:], self.b[1:])):
-            np.matmul(weight, self.z) + bias
+        for i in range(self.L):
+            self.a[i] = np.matmul(self.W[0], x) + self.b[0]
+            pass
         ## Use Sigmoid activation function defined above
         # your code here
 
