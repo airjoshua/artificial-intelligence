@@ -158,11 +158,17 @@ class Network:
         if len(x.shape) == 1:
             x = x.reshape(-1, 1)
         # TODO: step 1. Initialize activation on initial layer to x
-        np.matmul(self.W)
-        np.dot(self.W, x)
+        len(self.W)
+        initial_layer = np.matmul(self.W[0], x) + self.b[0]
+        self.z[0] = initial_layer
+        for i, item in enumerate(self.W):
+            np.dot(self.W[0], x)
         pass
+        # Ddd
 
         ## TODO: step 2-4. Loop over layers and compute activities and activations
+        for i, (weight, bias) in enumerate(zip(self.W[1:], self.b[1:])):
+            np.matmul(weight, self.z) + bias
         ## Use Sigmoid activation function defined above
         # your code here
 
