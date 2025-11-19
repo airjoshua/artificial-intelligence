@@ -158,14 +158,14 @@ class Network:
             x = x.reshape(-1, 1)
         # TODO: step 1. Initialize activation on initial layer to x
         self.a[0] = x
-        #
 
         ## TODO: step 2-4. Loop over layers and compute activities and activations
-        for i in range(self.L):
-            self.a[i] = np.matmul(self.W[0], x) + self.b[0]
-            pass
         ## Use Sigmoid activation function defined above
         # your code here
+        for i in range(self.L - 1):
+            self.z[i + 1] = np.matmul(self.W[i], self.z[i]) + self.b[i]
+            self.a[i + 1] = self.g(self.z[i + 1])
+        return self
 
     def back_prop(self, x, y):
         """
@@ -179,16 +179,27 @@ class Network:
             y = y.reshape(-1, 1)
 
         # TODO: step 1. forward prop training example to fill in activities and activations
+        self.forward_prop(x)
         # your code here
-
+        output_index = self.L - 1
         # TODO: step 2. compute deltas on output layer (Hint: python index numbering starts from 0 ends at N-1)
+        output_layer = self.a[output_index]
+        self.delta[output_index] = self.grad_loss(output_layer, y)
         # Correction in Instructions: From the instructions mentioned below for backward propagation,
         # Use normal product instead of dot product in Step 2 and 6
         # The derivative and gradient functions have already been implemented for you
         # your code here
 
         # TODO: step 3-6. loop backward through layers, backprop deltas, compute dWs and dbs
-        # your code here
+        # Step 3-6: Loop backward through layers, backprop deltas, compute dWs and dbs
+        for i in range(self.L - 2, 0, -1):  # Loop from L-2 down to 1
+            # Step 4: Backpropagate delta to previous layer
+            derivative = self.g_prime(self.z[i])
+            self.delta[i] = np.matmul(self.W[i].T, self.delta[i + 1]) * derivative
+
+        for i in range(self.L - 1):  # Loop from 0 to L-2
+            self.dW[i] = np.matmul(self.delta[i + 1], self.a[i].T)
+            self.db[i] = self.delta[i + 1]
 
     def train(
         self,
